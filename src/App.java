@@ -4,11 +4,14 @@ import Dominio.Animal;
 import Dominio.Cliente;
 import Dominio.Colaborador;
 import Dominio.Fornecedor;
+import Dominio.ItemPedido;
+import Dominio.Pedido;
 import Dominio.Veterinario;
 import Repositorio.AnimalRepositorio;
 import Repositorio.ClienteRepositorio;
 import Repositorio.ColaboradorRepositorio;
 import Repositorio.FornecedorRepositorio;
+import Repositorio.PedidoRepositorio;
 import Repositorio.VeterinarioRepositorio;
 
 public class App {
@@ -60,12 +63,30 @@ public class App {
 
         VeterinarioRepositorio RepVet = new VeterinarioRepositorio();
         ArrayList<Veterinario> veterinario = RepVet.readAll();
+        System.out.println("veterinarios");
         for(Veterinario veterinarios : veterinario){
             System.out.println("Codigo: " + veterinarios.getCodigo());
             System.out.println("Nome:" + veterinarios.getNome());
             System.out.println("CPF: " + veterinarios.getCpf());
             System.out.println("RG: " + veterinarios.getRg());
             System.out.println("CRMV " + veterinarios.getRegCRMV());
+        }
+
+        System.out.println("");
+
+        PedidoRepositorio RepPedido = new PedidoRepositorio();
+        ArrayList<Pedido> pedido = RepPedido.readAll();
+        System.out.println("------PEDIDO------");
+        for(Pedido pedidos : pedido){
+            System.out.println("Codigo: " + pedidos.getCodigo());
+            System.out.println("Numero Pedido: " + pedidos.getNumero());
+            System.out.println("Data Pedido: "+ pedidos.getData());
+            System.out.println("\t------ITENS------");
+            for(ItemPedido item : pedidos.getItensPedido()){
+                System.out.println("\tCodigo do item: " + item.getCodigo());
+                System.out.println("\tPreço Unitário: " + item.getProduto().getPrecoVenda());
+                System.out.println("\tQuantidade: "+ item.getQuantidade());
+            }
         }
     }
 }
