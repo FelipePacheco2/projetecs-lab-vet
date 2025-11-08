@@ -22,7 +22,7 @@ public class Fornecedor extends AbsPessoaJuridica{
     }
 
     public Fornecedor(int codigo,String razaoSocial, String nomeFantasia, String cnpj, String contatoTel, String contatoEmail){
-        this.codigo = codigo;
+        this.codigo = codigo; 
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
         this.cnpj = cnpj;
