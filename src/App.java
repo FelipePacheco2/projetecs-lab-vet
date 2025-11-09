@@ -16,6 +16,11 @@ import Repositorio.VeterinarioRepositorio;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        int totalqts = 0; 
+        float totalValor = 0;
+        float totalCusto = 0;
+
         ClienteRepositorio RepClient = new ClienteRepositorio();
         ArrayList<Cliente> cliente = RepClient.readAll();
         System.out.println("Clientes");
@@ -76,8 +81,8 @@ public class App {
 
         PedidoRepositorio RepPedido = new PedidoRepositorio();
         ArrayList<Pedido> pedido = RepPedido.readAll();
-        System.out.println("------PEDIDO------");
         for(Pedido pedidos : pedido){
+            System.out.println("------PEDIDO------");
             System.out.println("Codigo: " + pedidos.getCodigo());
             System.out.println("Numero Pedido: " + pedidos.getNumero());
             System.out.println("Data Pedido: "+ pedidos.getData());
@@ -86,7 +91,16 @@ public class App {
                 System.out.println("\tCodigo do item: " + item.getCodigo());
                 System.out.println("\tPreço Unitário: " + item.getProduto().getPrecoVenda());
                 System.out.println("\tQuantidade: "+ item.getQuantidade());
+                totalqts += item.getQuantidade();
+                totalValor += item.getProduto().getPrecoVenda();
+                totalCusto += item.getProduto().getPrecoCusto();
             }
         }
+
+        System.out.println("------CAIXA------");
+        System.err.println("total de vendas: " + totalqts);
+        System.err.println("total Valor Bruto: R$" + totalValor);
+        System.err.println("total Lucro: R$" + (totalValor - totalCusto));
+        
     }
 }

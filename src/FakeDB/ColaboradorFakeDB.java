@@ -19,5 +19,7 @@ public class ColaboradorFakeDB extends AbsFakeDB<Colaborador> {
     public ColaboradorFakeDB(){
         super();
     }
+
+    
     
 }

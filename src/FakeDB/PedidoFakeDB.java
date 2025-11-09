@@ -33,9 +33,9 @@ public class PedidoFakeDB extends AbsFakeDB<Pedido> {
     
     private ItemPedido criarItemPedido(int codigo, int codigoPedido, int quantidade){
         ItemPedido itempedido = new ItemPedido(codigo, codigoPedido, quantidade);
-        itempedido.setProduto(this.criarProduto(1, "maça", 1110, 1.5f));
-        itempedido.setProduto(this.criarProduto(2, "pera", 1111, 1.5f));
-        itempedido.setProduto(this.criarProduto(3, "macarao", 1112, 1.5f));
+        itempedido.setProduto(this.criarProduto(1, "maça", 2, 5f));
+        itempedido.setProduto(this.criarProduto(2, "pera", 2, 5f));
+        itempedido.setProduto(this.criarProduto(3, "macarao", 2, 5f));
         return itempedido;
     }
 
